@@ -1,0 +1,17 @@
+type Query {
+  fetchUser(userId: ID!): User!
+}
+
+type Mutation {
+  updateUser(userId: ID!, input: UpdateUser!): Boolean
+}
+
+type User {
+  userId: ID!
+  name: String!
+  email: String!
+}
+
+input UpdateUser {
+  name: String
+}
