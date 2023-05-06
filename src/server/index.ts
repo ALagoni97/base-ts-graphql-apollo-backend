@@ -4,8 +4,9 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
-import { Context } from "@/context/Context.js";
-import { typeDefs } from "@graphql-types/index.js";
+import { Context, databaseConnection } from "context";
+import { typeDefs } from "graphql-types";
+import { resolvers } from "resolvers";
 
 // Required logic for integrating with Express
 const app = express();
@@ -43,7 +44,6 @@ const server = new ApolloServer<Context>({
     expressMiddleware(server, {
       context: async ({ req }) => ({
         database: databaseConnection,
-        user: await generateUser(req),
       }),
     })
   );

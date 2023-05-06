@@ -1,7 +1,4 @@
-import {
-  GQLLoginProviders,
-  GQLResolvers,
-} from "../__generated__/resolvers-types";
+import { GQLResolvers } from "__generated__/resolvers-types";
 
 export const UsersResolver: GQLResolvers = {
   Query: {
@@ -26,43 +23,14 @@ export const UsersResolver: GQLResolvers = {
   },
   Mutation: {
     updateUser: async (_, { userId, input }, ctx) => {
-      const user = await ctx.database.user.findFirstOrThrow({
-        where: { id: userId },
-        include: { UserDetails: true },
-      });
-      await ctx.database.user.update({
+      await ctx.database.userDetails.update({
         where: {
-          id: userId,
+          userId: userId,
         },
         data: {
-          name: input.name || undefined,
+          name: input.name,
         },
       });
-      if (!user.UserDetails) {
-        // No userdetails created so we create
-        await ctx.database.userDetails.create({
-          data: {
-            userId: userId,
-            age: input.age,
-            weight: input.weight,
-            height: input.height,
-            sex: input.sex,
-          },
-        });
-      } else {
-        // No userdetails created so we create
-        await ctx.database.userDetails.update({
-          where: {
-            userId: userId,
-          },
-          data: {
-            age: input.age,
-            weight: input.weight,
-            height: input.height,
-            sex: input.sex,
-          },
-        });
-      }
 
       return true;
     },
