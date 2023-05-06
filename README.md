@@ -11,4 +11,5 @@ The example in the template is just for starting out.
 
 ### CommonJS / ESM
 In this template I am sticking with CommonJS. Why? Just easier to develop and maintain for now. Typescript doesn't make it easy to develop a full ESM 
-project with 
+project with problems such as needing File Extensions on all your imports which makes development anoying. To fix it you need to change some configuration and it seems alot easier to stick with CommonJS for now. This will obviously change in the future as more and more libraries are changing to ESM. That means upgrading dependencies will suck in the future if you stick with CommonJS, but for now it's fine. 
+
