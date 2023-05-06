@@ -1,6 +1,7 @@
 # GraphQL Node.JS API built with Typescript template
 ### Introduction
 This project is built so that I have a template to use whenever I need a backend API. This will be maintained. 
+It uses Node.JS and Express library on top where we use Apollo Server on top to create our API. We use the ExpressMiddleware from Apollo so we could add our own Node.JS REST Endpoints if we need. This could be for handling file upload as you might want to use REST Endpoints for that instead of GraphQL upload libraries. 
 
 ### Prisma
 Prisma is a ORM for PostgreSQL and can easily be swapped out for something else depending on needs. 
